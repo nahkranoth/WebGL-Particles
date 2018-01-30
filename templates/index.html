@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta charset="UTF-8">
+    <script src="{{ url_for('static', filename='scripts/require.js')}}"></script>
+    <script>
+        require.config({
+            baseUrl: "scripts/",
+            paths: {
+                "jquery":"vendor/jquery",
+                "underscore": "vendor/underscore",
+                "sylvester": "vendor/sylvester",
+                "sylvester-ext":"vendor/sylvester-ext",
+                sceneManager: 'core/sceneManager',
+                renderManager: '/core/renderManager',
+                shaderManager: 'core/shaderManager',
+                materialManager:"core/materialManager",
+                gameObject:"core/gameObject",
+                particleObject:"core/particleObject",
+                shaderObject:"core/shaderObject",
+                transform2D:"core/transform2D",
+                material:"core/material"
+            },
+            shim:{
+                'sylvester-ext': {
+                    //These script dependencies should be loaded before loading
+                    //backbone.js
+                    deps: ['sylvester'],
+                    //Once loaded, use the global 'Backbone' as the
+                    //module value.
+                    exports: 'sylvester'
+                }
+            }
+        });
+        require(['core/sceneManager'], function(sceneManager) {
+            sceneManager.init();
+        });
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+
+    <title>Test WebGL Animations</title>
+</head>
+    <body>
+        <canvas id="myCanvas" width="200" height="200"></canvas>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+Object = 
+    transform,
+    vertex_shader,
+    fragment_shader,
+    vertices,
+    material?
+
+SCENE
+stores all objects, camera's, and scene settings
+
+MAIN
+Initiate:
+Startup Engine
+
+Update Loop:
+Take A List OF Objects -> Apply transforms ->
+Feed into Render Engine
+
+
+
+
+RENDER ENGINE
+
+[initEngine] ->
+Init_Engine
+
+{per frame}
+[Render (Entrypoint)] ->
+ClearPreviousScreen ->
+RenderObject(in Object)
